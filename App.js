@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 export default function App() {
-  const [ inputItem, setInputItem ] = useState("");
-  const [ itemList, setItemList ] = useState([]);
+  const [inputItem, setInputItem] = useState("");
+  const [itemList, setItemList] = useState([]);
 
   onChangeItemHandler = (enteredText) => {
     setInputItem(enteredText)
@@ -20,12 +20,19 @@ export default function App() {
         <TextInput
           placeholder="Enter your the item"
           style={styles.inputText}
-          onChangeText = {onChangeItemHandler}
-          value = {inputItem}
+          onChangeText={onChangeItemHandler}
+          value={inputItem}
         />
-        <Button title="ADD" onPress = {onClickHandler}/>
+        <Button title="ADD" onPress={onClickHandler} />
       </View>
-    </View>    
+
+      <View>
+        {itemList.map((item) =>
+          <Text key={item}>{item}</Text>
+        )}
+      </View>
+    </View>
+
   );
 }
 
