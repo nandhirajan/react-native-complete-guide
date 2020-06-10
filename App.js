@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button, ScrollView } from 'react-native';
 
 const styles = StyleSheet.create({
   root: {
@@ -16,15 +16,16 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "80%"
   },
-  itemList:{
+  itemList: {
     padding: 10,
     marginVertical: 10,
-    backgroundColor:"#ccc",
+    backgroundColor: "#ccc",
     borderWidth: 1,
     borderColor: "black"
   }
 });
 
+//@refresh reset
 export default function App() {
   const [inputItem, setInputItem] = useState("");
   const [itemList, setItemList] = useState([]);
@@ -49,14 +50,13 @@ export default function App() {
         />
         <Button title="ADD" onPress={onClickHandler} />
       </View>
-
-      <View>
+      <ScrollView>
         {itemList.map((item) =>
-          <View key={item} style ={styles.itemList}>
+          <View key={item} style={styles.itemList}>
             <Text>{item}</Text>
           </View>
         )}
-      </View>
+      </ScrollView>
     </View>
 
   );
