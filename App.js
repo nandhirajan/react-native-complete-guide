@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Button } from 'react-native';
 
 export default function App() {
+  const [ inputItem, setInputItem ] = useState("");
+  const [ itemList, setItemList ] = useState([]);
+
+  onChangeItemHandler = (enteredText) => {
+    setInputItem(enteredText)
+  }
+
+  onClickHandler = () => {
+    setItemList([...itemList, inputItem]);
+    setInputItem("");
+  }
+
   return (
     <View style={styles.root}>
       <View style={styles.inputContainer}>
         <TextInput
-          placeholder="Enter your Text"
+          placeholder="Enter your the item"
           style={styles.inputText}
+          onChangeText = {onChangeItemHandler}
+          value = {inputItem}
         />
-        <Button title="ADD" />
+        <Button title="ADD" onPress = {onClickHandler}/>
       </View>
-    </View>
+    </View>    
   );
 }
 
