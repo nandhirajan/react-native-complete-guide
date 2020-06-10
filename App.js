@@ -1,6 +1,30 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
+const styles = StyleSheet.create({
+  root: {
+    padding: 30
+  },
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
+  inputText: {
+    borderColor: "black",
+    borderWidth: 1,
+    padding: 10,
+    width: "80%"
+  },
+  itemList:{
+    padding: 10,
+    marginVertical: 10,
+    backgroundColor:"#ccc",
+    borderWidth: 1,
+    borderColor: "black"
+  }
+});
+
 export default function App() {
   const [inputItem, setInputItem] = useState("");
   const [itemList, setItemList] = useState([]);
@@ -28,7 +52,9 @@ export default function App() {
 
       <View>
         {itemList.map((item) =>
-          <Text key={item}>{item}</Text>
+          <View key={item} style ={styles.itemList}>
+            <Text>{item}</Text>
+          </View>
         )}
       </View>
     </View>
@@ -36,19 +62,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  root: {
-    padding: 30
-  },
-  inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  inputText: {
-    borderColor: "black",
-    borderWidth: 1,
-    padding: 10,
-    width: "80%"
-  }
-});
