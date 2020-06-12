@@ -1,5 +1,9 @@
+//@refresh reset
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, View, Button, ScrollView } from 'react-native';
+
+import ItemInput from './src/component/ItemInput';
+import ItemList from './src/component/ItemList';
 
 const styles = StyleSheet.create({
   root: {
@@ -25,7 +29,6 @@ const styles = StyleSheet.create({
   }
 });
 
-//@refresh reset
 export default function App() {
   const [inputItem, setInputItem] = useState("");
   const [itemList, setItemList] = useState([]);
@@ -36,27 +39,20 @@ export default function App() {
 
   onClickHandler = () => {
     setItemList([...itemList, inputItem]);
-    setInputItem("");
+    // setInputItem("");
   }
 
   return (
     <View style={styles.root}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Enter your the item"
-          style={styles.inputText}
-          onChangeText={onChangeItemHandler}
-          value={inputItem}
-        />
-        <Button title="ADD" onPress={onClickHandler} />
-      </View>
-      <ScrollView>
-        {itemList.map((item) =>
-          <View key={item} style={styles.itemList}>
-            <Text>{item}</Text>
-          </View>
-        )}
-      </ScrollView>
+      <ItemInput
+        onChangeItemHandler ={onChangeItemHandler}
+        inputItem = {inputItem}
+        onClickHandler = {onClickHandler}
+      />
+
+      <ItemList 
+        itemList={itemList}
+      />
     </View>
 
   );
