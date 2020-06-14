@@ -18,15 +18,16 @@ export default function App() {
     setItemList([...itemList, inputItem]);
     // setInputItem("");
   }
-
+  
   return (
     <View style={styles.root}>
+
       <ItemInput
         onClickHandler={onClickHandler}
       />
 
       <ItemList
-        itemList={itemList}
+        itemList={itemList}  
       />
     </View>
 

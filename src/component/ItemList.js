@@ -1,18 +1,20 @@
 //@refresh reset
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ItemList = props => {
 
-    return (
-      <ScrollView>
-        {props.itemList.map((item) =>
-          <View key={item} style={styles.itemList}>
+  return (
+    <ScrollView>
+      {props.itemList.map((item) =>
+        <TouchableOpacity key={item} activeOpacity ={0.8}>
+          <View style={styles.itemList}>
             <Text>{item}</Text>
           </View>
-        )}
-      </ScrollView>
-    )
+        </TouchableOpacity>
+      )}
+    </ScrollView>
+  )
 }
 
 const styles = StyleSheet.create({
