@@ -19,6 +19,11 @@ export default function App() {
     // setInputItem("");
   }
   
+  deleteItemHandler = (item) => {
+    const updatedList = itemList.filter(ele => ele!==item );
+    setItemList(updatedList);
+  }
+
   return (
     <View style={styles.root}>
 
@@ -27,6 +32,7 @@ export default function App() {
       />
 
       <ItemList
+        deleteItemHandler={deleteItemHandler}
         itemList={itemList}  
       />
     </View>

@@ -1,5 +1,5 @@
 //@refresh reset
-import React from 'react';
+import React, {useState} from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 
 const ItemList = props => {
@@ -7,7 +7,11 @@ const ItemList = props => {
   return (
     <ScrollView>
       {props.itemList.map((item) =>
-        <TouchableOpacity key={item} activeOpacity ={0.8}>
+        <TouchableOpacity 
+          key={item} 
+          activeOpacity ={0.8} 
+          onPress = {()=> props.deleteItemHandler(item)} 
+        >
           <View style={styles.itemList}>
             <Text>{item}</Text>
           </View>
