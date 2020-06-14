@@ -24,8 +24,15 @@ const ItemInput = props => {
                     onChangeText={onChangeItemHandler}
                     value={inputItem}
                 />
-                <Button title="ADD" onPress={() => onClickHandler(inputItem)} />
-                <Button title="CANCEL" color ="red" onPress={props.onClose} />
+                <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                        <Button title="CANCEL" color="red" onPress={props.onClose} />
+                    </View>
+                    <View style={styles.button}>
+                        <Button title="ADD" onPress={() => onClickHandler(inputItem)} />
+                    </View>
+
+                </View>
             </View>
         </Modal>)
 }
@@ -42,6 +49,14 @@ const styles = StyleSheet.create({
         padding: 10,
         width: "80%",
         marginBottom: 10
+    },
+    buttonContainer: {
+        flexDirection: "row",
+        justifyContent: "space-around",
+        width: "60%"
+    },
+    button: {
+        width: "40%"
     }
 });
 
